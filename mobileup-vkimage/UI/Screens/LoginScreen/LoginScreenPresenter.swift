@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ILoginScreenPresenter: AnyObject {
-    
+    func viewDidLoad()
+    func loginButtonTapped()
 }
 
 final class LoginScreenPresenter: ILoginScreenPresenter {
@@ -17,5 +18,14 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     
     init(router: ILoginScreenRouter) {
         self.router = router
+    }
+    
+    func viewDidLoad() {
+        // TODO: Implementation
+    }
+    
+    func loginButtonTapped() {
+        // TODO: Implementation
+        print(#function)
     }
 }
