@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB3E29F98F8100F8761B /* AppDelegate.swift */; };
 		75D5CB4129F98F8100F8761B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB4029F98F8100F8761B /* SceneDelegate.swift */; };
-		75D5CB4329F98F8100F8761B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB4229F98F8100F8761B /* ViewController.swift */; };
 		75D5CB4629F98F8100F8761B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D5CB4429F98F8100F8761B /* Main.storyboard */; };
 		75D5CB4829F98F8300F8761B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D5CB4729F98F8300F8761B /* Assets.xcassets */; };
 		75D5CB4B29F98F8300F8761B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D5CB4929F98F8300F8761B /* LaunchScreen.storyboard */; };
+		75D5CB5329F9926000F8761B /* LoginScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5229F9926000F8761B /* LoginScreenAssembly.swift */; };
+		75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */; };
+		75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5629F992D200F8761B /* LoginScreenPresenter.swift */; };
+		75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5829F992DD00F8761B /* LoginScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		75D5CB3B29F98F8100F8761B /* mobileup-vkimage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobileup-vkimage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D5CB3E29F98F8100F8761B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D5CB4029F98F8100F8761B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		75D5CB4229F98F8100F8761B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75D5CB4529F98F8100F8761B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75D5CB4729F98F8300F8761B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D5CB4A29F98F8300F8761B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75D5CB4C29F98F8300F8761B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75D5CB5229F9926000F8761B /* LoginScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenAssembly.swift; sourceTree = "<group>"; };
+		75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenRouter.swift; sourceTree = "<group>"; };
+		75D5CB5629F992D200F8761B /* LoginScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenPresenter.swift; sourceTree = "<group>"; };
+		75D5CB5829F992DD00F8761B /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,40 @@
 			children = (
 				75D5CB3E29F98F8100F8761B /* AppDelegate.swift */,
 				75D5CB4029F98F8100F8761B /* SceneDelegate.swift */,
-				75D5CB4229F98F8100F8761B /* ViewController.swift */,
-				75D5CB4429F98F8100F8761B /* Main.storyboard */,
+				75D5CB5A29F9946100F8761B /* UI */,
 				75D5CB4729F98F8300F8761B /* Assets.xcassets */,
 				75D5CB4929F98F8300F8761B /* LaunchScreen.storyboard */,
+				75D5CB4429F98F8100F8761B /* Main.storyboard */,
 				75D5CB4C29F98F8300F8761B /* Info.plist */,
 			);
 			path = "mobileup-vkimage";
+			sourceTree = "<group>";
+		};
+		75D5CB5A29F9946100F8761B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				75D5CB5B29F9947500F8761B /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		75D5CB5B29F9947500F8761B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				75D5CB5C29F9949100F8761B /* LoginScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		75D5CB5C29F9949100F8761B /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				75D5CB5229F9926000F8761B /* LoginScreenAssembly.swift */,
+				75D5CB5629F992D200F8761B /* LoginScreenPresenter.swift */,
+				75D5CB5829F992DD00F8761B /* LoginScreenViewController.swift */,
+				75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */,
+			);
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +171,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75D5CB4329F98F8100F8761B /* ViewController.swift in Sources */,
+				75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */,
+				75D5CB5329F9926000F8761B /* LoginScreenAssembly.swift in Sources */,
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,
+				75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */,
+				75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */,
 				75D5CB4129F98F8100F8761B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
