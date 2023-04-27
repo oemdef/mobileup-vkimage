@@ -15,6 +15,10 @@
 		75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */; };
 		75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5629F992D200F8761B /* LoginScreenPresenter.swift */; };
 		75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB5829F992DD00F8761B /* LoginScreenViewController.swift */; };
+		75D5CB6729FAD16200F8761B /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5CB6629FAD16200F8761B /* AuthWebViewController.swift */; };
+		75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF1E29FB1FB50027F8F7 /* AuthWebViewAssembly.swift */; };
+		75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */; };
+		75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenRouter.swift; sourceTree = "<group>"; };
 		75D5CB5629F992D200F8761B /* LoginScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenPresenter.swift; sourceTree = "<group>"; };
 		75D5CB5829F992DD00F8761B /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
+		75D5CB6629FAD16200F8761B /* AuthWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
+		75DFCF1E29FB1FB50027F8F7 /* AuthWebViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewAssembly.swift; sourceTree = "<group>"; };
+		75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewPresenter.swift; sourceTree = "<group>"; };
+		75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				75D5CB5C29F9949100F8761B /* LoginScreen */,
+				75DFCF1D29FB1F9C0027F8F7 /* AuthWebView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -95,6 +104,17 @@
 				75D5CB5429F992C600F8761B /* LoginScreenRouter.swift */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		75DFCF1D29FB1F9C0027F8F7 /* AuthWebView */ = {
+			isa = PBXGroup;
+			children = (
+				75DFCF1E29FB1FB50027F8F7 /* AuthWebViewAssembly.swift */,
+				75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */,
+				75D5CB6629FAD16200F8761B /* AuthWebViewController.swift */,
+				75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */,
+			);
+			path = AuthWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +187,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */,
+				75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */,
+				75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */,
+				75D5CB6729FAD16200F8761B /* AuthWebViewController.swift in Sources */,
 				75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */,
 				75D5CB5329F9926000F8761B /* LoginScreenAssembly.swift in Sources */,
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,
@@ -240,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -294,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -314,6 +338,8 @@
 				DEVELOPMENT_TEAM = 7M52TR9EGY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mobileup-vkimage/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "VK Image";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -341,6 +367,8 @@
 				DEVELOPMENT_TEAM = 7M52TR9EGY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mobileup-vkimage/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "VK Image";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

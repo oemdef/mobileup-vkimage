@@ -7,9 +7,9 @@
 
 import Foundation
 import UIKit
+import AuthenticationServices
 
 protocol ILoginScreenView: AnyObject {
-    
 }
 
 final class LoginScreenViewController: UIViewController, ILoginScreenView {
@@ -61,7 +61,7 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
     @objc private func loginButtonTapped() {
         presenter.loginButtonTapped()
     }
-    
+                                                    
     private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(loginButton)
@@ -82,3 +82,4 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
         ])
     }
 }
+

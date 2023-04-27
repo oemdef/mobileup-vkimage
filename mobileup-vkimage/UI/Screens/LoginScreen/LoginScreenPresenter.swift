@@ -25,7 +25,6 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     }
     
     func loginButtonTapped() {
-        // TODO: Implementation
-        print(#function)
+        router.showAuthWebView()
     }
 }
