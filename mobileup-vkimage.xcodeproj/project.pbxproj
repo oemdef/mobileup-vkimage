@@ -19,6 +19,7 @@
 		75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF1E29FB1FB50027F8F7 /* AuthWebViewAssembly.swift */; };
 		75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */; };
 		75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */; };
+		75DFCF2529FB36160027F8F7 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2429FB36160027F8F7 /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		75DFCF1E29FB1FB50027F8F7 /* AuthWebViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewAssembly.swift; sourceTree = "<group>"; };
 		75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewPresenter.swift; sourceTree = "<group>"; };
 		75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewRouter.swift; sourceTree = "<group>"; };
+		75DFCF2429FB36160027F8F7 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				75D5CB3E29F98F8100F8761B /* AppDelegate.swift */,
 				75D5CB4029F98F8100F8761B /* SceneDelegate.swift */,
+				75DFCF2629FB361D0027F8F7 /* Core */,
 				75D5CB5A29F9946100F8761B /* UI */,
 				75D5CB4729F98F8300F8761B /* Assets.xcassets */,
 				75D5CB4929F98F8300F8761B /* LaunchScreen.storyboard */,
@@ -115,6 +118,14 @@
 				75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */,
 			);
 			path = AuthWebView;
+			sourceTree = "<group>";
+		};
+		75DFCF2629FB361D0027F8F7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				75DFCF2429FB36160027F8F7 /* KeychainService.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */,
 				75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */,
 				75D5CB6729FAD16200F8761B /* AuthWebViewController.swift in Sources */,
+				75DFCF2529FB36160027F8F7 /* KeychainService.swift in Sources */,
 				75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */,
 				75D5CB5329F9926000F8761B /* LoginScreenAssembly.swift in Sources */,
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,

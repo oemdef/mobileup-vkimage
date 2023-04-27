@@ -33,7 +33,9 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
     
     func handleCallbackUrl(url: URL) {
         let urlString = url.absoluteString.replacingOccurrences(of: "#", with: "?")
-        let oauthToken = NSURLComponents(string: urlString)?.queryItems?.filter({$0.name == "access_token"}).first?.value
+        let queryItems = NSURLComponents(string: urlString)?.queryItems
+        
+        let oauthToken = queryItems?.filter({$0.name == "access_token"}).first?.value
         
         if let oauthToken {
             // TODO: Save valid token to Keychain
