@@ -73,8 +73,12 @@ extension AuthWebViewController: WKNavigationDelegate {
         }
     }
     
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        presenter.failedToLoad(with: error)
+    }
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activityIndicator.stopAnimating()
-        presenter.failedToLoad()
+        presenter.failedToLoad(with: error)
     }
 }

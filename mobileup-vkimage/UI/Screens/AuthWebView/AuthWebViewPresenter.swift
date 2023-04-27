@@ -9,7 +9,7 @@ import Foundation
 
 protocol IAuthWebViewPresenter: AnyObject {
     func viewDidLoad()
-    func failedToLoad()
+    func failedToLoad(with error: Error)
     func handleCallbackUrl(url: URL)
 }
 
@@ -25,8 +25,10 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
         // TODO: Implementation
     }
     
-    func failedToLoad() {
+    func failedToLoad(with error: Error) {
         // TODO: Implementation
+        print(#function)
+        print(error.localizedDescription)
     }
     
     func handleCallbackUrl(url: URL) {
