@@ -17,7 +17,7 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "MobileUp Gallery"
+        titleLabel.text = "Mobile Up\nGallery"
         titleLabel.numberOfLines = 2
         titleLabel.font = .systemFont(ofSize: 44, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

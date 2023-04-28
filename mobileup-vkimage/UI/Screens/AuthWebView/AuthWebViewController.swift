@@ -74,6 +74,7 @@ extension AuthWebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
         presenter.failedToLoad(with: error)
     }
     
