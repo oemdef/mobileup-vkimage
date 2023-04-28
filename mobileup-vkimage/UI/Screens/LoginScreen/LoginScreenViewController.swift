@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import AuthenticationServices
 
 protocol ILoginScreenView: AnyObject {
 }

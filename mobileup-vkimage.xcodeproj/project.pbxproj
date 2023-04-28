@@ -20,6 +20,10 @@
 		75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */; };
 		75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */; };
 		75DFCF2529FB36160027F8F7 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2429FB36160027F8F7 /* KeychainService.swift */; };
+		75DFCF2829FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2729FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift */; };
+		75DFCF2A29FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */; };
+		75DFCF2C29FC015B0027F8F7 /* AlbumGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */; };
+		75DFCF2E29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		75DFCF2029FB1FC00027F8F7 /* AuthWebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewPresenter.swift; sourceTree = "<group>"; };
 		75DFCF2229FB1FCE0027F8F7 /* AuthWebViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewRouter.swift; sourceTree = "<group>"; };
 		75DFCF2429FB36160027F8F7 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		75DFCF2729FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewAssembly.swift; sourceTree = "<group>"; };
+		75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewPresenter.swift; sourceTree = "<group>"; };
+		75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewController.swift; sourceTree = "<group>"; };
+		75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 			children = (
 				75D5CB5C29F9949100F8761B /* LoginScreen */,
 				75DFCF1D29FB1F9C0027F8F7 /* AuthWebView */,
+				75DFCF2F29FC01F10027F8F7 /* AlbumGalleryView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -126,6 +135,17 @@
 				75DFCF2429FB36160027F8F7 /* KeychainService.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		75DFCF2F29FC01F10027F8F7 /* AlbumGalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				75DFCF2729FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift */,
+				75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */,
+				75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */,
+				75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */,
+			);
+			path = AlbumGalleryView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,14 +219,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */,
+				75DFCF2E29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift in Sources */,
 				75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */,
 				75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */,
 				75D5CB6729FAD16200F8761B /* AuthWebViewController.swift in Sources */,
+				75DFCF2C29FC015B0027F8F7 /* AlbumGalleryViewController.swift in Sources */,
 				75DFCF2529FB36160027F8F7 /* KeychainService.swift in Sources */,
 				75D5CB5929F992DD00F8761B /* LoginScreenViewController.swift in Sources */,
 				75D5CB5329F9926000F8761B /* LoginScreenAssembly.swift in Sources */,
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,
+				75DFCF2A29FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift in Sources */,
 				75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */,
+				75DFCF2829FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift in Sources */,
 				75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */,
 				75D5CB4129F98F8100F8761B /* SceneDelegate.swift in Sources */,
 			);

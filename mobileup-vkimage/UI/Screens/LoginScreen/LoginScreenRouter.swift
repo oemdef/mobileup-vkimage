@@ -10,13 +10,14 @@ import UIKit
 
 protocol ILoginScreenRouter: AnyObject {
     func showAuthWebView()
+    func showAlbumGalleryView()
 }
 
 final class LoginScreenRouter: ILoginScreenRouter {
     weak var transitionHandler: UIViewController?
     
     private let authWebViewAssembly = AuthWebViewAssembly()
-//    private let albumGalleryViewAssembly = AlbumGalleryViewAssembly()
+    private let albumGalleryViewAssembly = AlbumGalleryViewAssembly()
     
     func showAuthWebView() {
         // TODO: Move this out of here
@@ -29,5 +30,10 @@ final class LoginScreenRouter: ILoginScreenRouter {
         let viewController = authWebViewAssembly.assemble(with: url)
         viewController.modalPresentationStyle = .automatic
         transitionHandler?.present(viewController, animated: true)
+    }
+    
+    func showAlbumGalleryView() {
+        let viewController = albumGalleryViewAssembly.assemble()
+        transitionHandler?.navigationController?.pushViewController(viewController, animated: true)
     }
 }
