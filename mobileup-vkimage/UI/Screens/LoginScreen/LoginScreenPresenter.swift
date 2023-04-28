@@ -10,6 +10,7 @@ import Foundation
 protocol ILoginScreenPresenter: AnyObject {
     func viewDidLoad()
     func loginButtonTapped()
+    func authWebViewGotDismissed()
 }
 
 final class LoginScreenPresenter: ILoginScreenPresenter {
@@ -21,12 +22,16 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     }
     
     func viewDidLoad() {
-        if AuthService.standard.isLastTokenValid() {
-            router.showAlbumGalleryView()
-        }
+        authWebViewGotDismissed()
     }
     
     func loginButtonTapped() {
         router.showAuthWebView()
+    }
+    
+    func authWebViewGotDismissed() {
+        if AuthService.standard.isLastTokenValid() {
+            router.showAlbumGalleryView()
+        }
     }
 }

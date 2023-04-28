@@ -16,6 +16,8 @@ final class AuthWebViewController: UIViewController, IAuthWebView {
     private let presenter: IAuthWebViewPresenter
     private var url: URL
     
+    weak var delegate: ILoginScreenView?
+    
     private lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.navigationDelegate = self
@@ -30,9 +32,10 @@ final class AuthWebViewController: UIViewController, IAuthWebView {
         return activityIndicator
     }()
     
-    init(presenter: IAuthWebViewPresenter, url: URL) {
+    init(presenter: IAuthWebViewPresenter, url: URL, delegate: ILoginScreenView) {
         self.presenter = presenter
         self.url = url
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,6 +53,11 @@ final class AuthWebViewController: UIViewController, IAuthWebView {
         let req = URLRequest(url: url)
         activityIndicator.startAnimating()
         webView.load(req)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.presentedDidDismiss()
     }
     
     private func addSubviews() {

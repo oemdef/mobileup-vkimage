@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol ILoginScreenView: AnyObject {
+    func presentedDidDismiss()
 }
 
 final class LoginScreenViewController: UIViewController, ILoginScreenView {
@@ -57,6 +58,10 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
         presenter.viewDidLoad()
     }
     
+    func presentedDidDismiss() {
+        presenter.authWebViewGotDismissed()
+    }
+    
     @objc private func loginButtonTapped() {
         presenter.loginButtonTapped()
     }
@@ -82,3 +87,9 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
     }
 }
 
+// MARK: - UIAdaptivePresentationControllerDelegate
+//extension LoginScreenViewController: UIAdaptivePresentationControllerDelegate {
+//    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+//        presenter.authWebViewGotDismissed()
+//    }
+//}

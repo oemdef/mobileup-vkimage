@@ -29,6 +29,7 @@
 		75DFCF3529FC04030027F8F7 /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3429FC04030027F8F7 /* PhotoDetailsViewController.swift */; };
 		75DFCF3729FC040D0027F8F7 /* PhotoDetailsViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */; };
 		75DFCF3A29FC07C00027F8F7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3929FC07C00027F8F7 /* AuthService.swift */; };
+		75DFCF3D29FC2F880027F8F7 /* AlbumGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3C29FC2F880027F8F7 /* AlbumGalleryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		75DFCF3429FC04030027F8F7 /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 		75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewRouter.swift; sourceTree = "<group>"; };
 		75DFCF3929FC07C00027F8F7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		75DFCF3C29FC2F880027F8F7 /* AlbumGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		75DFCF2F29FC01F10027F8F7 /* AlbumGalleryView */ = {
 			isa = PBXGroup;
 			children = (
+				75DFCF3B29FC2F570027F8F7 /* Supplementary */,
 				75DFCF2729FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift */,
 				75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */,
 				75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */,
@@ -169,6 +172,14 @@
 				75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */,
 			);
 			path = PhotoDetailsView;
+			sourceTree = "<group>";
+		};
+		75DFCF3B29FC2F570027F8F7 /* Supplementary */ = {
+			isa = PBXGroup;
+			children = (
+				75DFCF3C29FC2F880027F8F7 /* AlbumGalleryCollectionViewCell.swift */,
+			);
+			path = Supplementary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,
 				75DFCF2A29FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift in Sources */,
 				75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */,
+				75DFCF3D29FC2F880027F8F7 /* AlbumGalleryCollectionViewCell.swift in Sources */,
 				75DFCF3529FC04030027F8F7 /* PhotoDetailsViewController.swift in Sources */,
 				75DFCF2829FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift in Sources */,
 				75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */,

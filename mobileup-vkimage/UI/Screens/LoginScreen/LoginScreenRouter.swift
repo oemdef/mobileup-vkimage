@@ -27,13 +27,13 @@ final class LoginScreenRouter: ILoginScreenRouter {
             return
         }
         
-        let viewController = authWebViewAssembly.assemble(with: url)
+        let viewController = authWebViewAssembly.assemble(with: url, delegate: transitionHandler as! ILoginScreenView)
         viewController.modalPresentationStyle = .automatic
         transitionHandler?.present(viewController, animated: true)
     }
     
     func showAlbumGalleryView() {
         let viewController = albumGalleryViewAssembly.assemble()
-        transitionHandler?.navigationController?.pushViewController(viewController, animated: true)
+        transitionHandler?.navigationController?.setViewControllers([viewController], animated: true)
     }
 }

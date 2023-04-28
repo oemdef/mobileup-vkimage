@@ -12,6 +12,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // MARK: – Back button appearance
+        let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backButtonAppearance = backButtonAppearance
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UIBarButtonItem.appearance().tintColor = .label
+        
         return true
     }
     

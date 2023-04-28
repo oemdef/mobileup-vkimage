@@ -26,6 +26,11 @@ final class AuthService {
         return accessToken
     }
     
+    func clearAccessToken() {
+        UserDefaults.standard.removeObject(forKey: String.userDefaultsExpKey)
+        KeychainService.standard.delete(service: String.kcServiceKey, account: String.kcAccountKey)
+    }
+    
     func isLastTokenValid() -> Bool {
         let expirationDate = UserDefaults.standard.double(forKey: String.userDefaultsExpKey)
         return Date.now.timeIntervalSince1970 > expirationDate ? false : true
