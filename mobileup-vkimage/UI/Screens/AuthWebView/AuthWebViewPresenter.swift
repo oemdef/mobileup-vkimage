@@ -36,14 +36,25 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
         let queryItems = NSURLComponents(string: urlString)?.queryItems
         
         let oauthToken = queryItems?.filter({$0.name == "access_token"}).first?.value
+        let expiresInString = queryItems?.filter({$0.name == "expires_in"}).first?.value
         
-        if let oauthToken {
-            // TODO: Save valid token to Keychain
-            gotValidToken()
+        if let oauthToken, let expiresInString {
+            if let expiresIn = Double(expiresInString) {
+                AuthService.standard.saveAccessToken(token: oauthToken, expiresIn: expiresIn)
+                gotValidToken()
+            } else {
+                gotInvalidToken()
+            }
+        } else {
+            gotInvalidToken()
         }
     }
     
     private func gotValidToken() {
         router.dismiss()
+    }
+    
+    private func gotInvalidToken() {
+        // TODO: Implementation
     }
 }

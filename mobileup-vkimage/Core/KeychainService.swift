@@ -9,7 +9,7 @@ import Foundation
 
 final class KeychainService {
     
-    static let standart = KeychainService()
+    static let standard = KeychainService()
     private init() {}
     
     func save(_ data: Data, service: String, account: String) {

@@ -21,7 +21,9 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     }
     
     func viewDidLoad() {
-        // TODO: Implementation
+        if AuthService.standard.isLastTokenValid() {
+            router.showAlbumGalleryView()
+        }
     }
     
     func loginButtonTapped() {
