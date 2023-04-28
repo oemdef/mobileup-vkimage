@@ -19,18 +19,23 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     weak var view: IAlbumGalleryView?
     private let router: IAlbumGalleryViewRouter
     
+    private let albumItems: [AlbumItem] = []
+    
     init(router: IAlbumGalleryViewRouter) {
         self.router = router
     }
     
     func viewDidLoad() {
-        // TODO: Implementation
+        view?.updateState(state: .loading)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            self?.view?.updateState(state: .ready)
+        }
     }
     
     func logout() {
         // TODO: Implement Logout Call to API
-        
-        AuthService.standard.clearAccessToken()
+//        AuthService.standard.clearAccessToken()
         router.logoutAndPopToRoot()
     }
     

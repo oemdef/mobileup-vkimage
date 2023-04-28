@@ -56,5 +56,6 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
     
     private func gotInvalidToken() {
         // TODO: Implementation
+        print(#function)
     }
 }

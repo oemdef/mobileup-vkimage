@@ -19,9 +19,11 @@ final class AuthWebViewController: UIViewController, IAuthWebView {
     weak var delegate: ILoginScreenView?
     
     private lazy var webView: WKWebView = {
-        let webView = WKWebView()
+        let configuration = WKWebViewConfiguration()
+        configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+        let webView = WKWebView(frame: view.frame, configuration: configuration)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.navigationDelegate = self
-        webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
     

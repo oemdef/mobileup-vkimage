@@ -74,22 +74,15 @@ final class LoginScreenViewController: UIViewController, ILoginScreenView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 72),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             titleLabel.widthAnchor.constraint(equalToConstant: 227)
         ])
         
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 52),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -14)
         ])
     }
 }
-
-// MARK: - UIAdaptivePresentationControllerDelegate
-//extension LoginScreenViewController: UIAdaptivePresentationControllerDelegate {
-//    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-//        presenter.authWebViewGotDismissed()
-//    }
-//}

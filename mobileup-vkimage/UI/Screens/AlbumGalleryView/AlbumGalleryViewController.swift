@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 protocol IAlbumGalleryView: AnyObject {
+    func updateState(state: ViewControllerState)
+}
+
+enum ViewControllerState {
+    case loading, ready
 }
 
 final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
@@ -27,9 +32,17 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 3
         flowLayout.minimumLineSpacing = 3
-        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3)
         flowLayout.sectionInsetReference = .fromSafeArea
         return flowLayout
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
     }()
     
     init(presenter: IAlbumGalleryViewPresenter) {
@@ -52,10 +65,6 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
         presenter.viewDidLoad()
     }
     
-    @objc private func tappedLogout() {
-        presenter.logout()
-    }
-    
     private func setupNavbar() {
         title = "MobileUp Gallery"
         let logoutButton = UIBarButtonItem(title: "Выход", style: .plain, target: self, action: #selector(tappedLogout))
@@ -64,9 +73,15 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
                                                     
     private func addSubviews() {
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
     }
     
     private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -74,20 +89,38 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    func updateState(state: ViewControllerState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .loading:
+                self.collectionView.isHidden = true
+                self.activityIndicator.startAnimating()
+            case .ready:
+                self.collectionView.isHidden = false
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    @objc private func tappedLogout() {
+        presenter.logout()
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AlbumGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width - (view.safeAreaInsets.left + view.safeAreaInsets.right)
-        let numberOfItemsPerRow: CGFloat = 2
+        let numberOfItemsPerRow: CGFloat = (!UIDevice.current.orientation.isLandscape) ? 2 : 4
         let spacing: CGFloat = flowLayout.minimumInteritemSpacing
-        let availableWidth = width - spacing
+        let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
         let itemDimension = floor(availableWidth / numberOfItemsPerRow)
         return CGSize(width: itemDimension, height: itemDimension)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         presenter.didSelectItemAt(indexPath)
     }
 }
@@ -106,6 +139,7 @@ extension AlbumGalleryViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumGalleryCollectionViewCell.identifier, for: indexPath) as? AlbumGalleryCollectionViewCell else {
              return UICollectionViewCell()
         }
+        
         return cell
     }
 }

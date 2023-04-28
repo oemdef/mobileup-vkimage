@@ -52,7 +52,25 @@ final class AlbumGalleryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    func configure(withUrl urlString: String) {
+//        activityIndicator.startAnimating()
+//        if let url = URL(string: urlString) {
+//            DispatchQueue.global().async {
+//                let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//                    guard let data = data, error == nil else { return }
+//
+//                    DispatchQueue.main.async {
+//                        self.activityIndicator.stopAnimating()
+//                        self.imageView.image = UIImage(data: data)
+//                    }
+//                }
+//                task.resume()
+//            }
+//        }
+//    }
+    
     override func prepareForReuse() {
         activityIndicator.startAnimating()
+        imageView.image = nil
     }
 }

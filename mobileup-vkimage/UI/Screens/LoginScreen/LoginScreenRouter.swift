@@ -20,13 +20,7 @@ final class LoginScreenRouter: ILoginScreenRouter {
     private let albumGalleryViewAssembly = AlbumGalleryViewAssembly()
     
     func showAuthWebView() {
-        // TODO: Move this out of here
-        let strLink: String = "https://oauth.vk.com/authorize?client_id=51627350&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&response_type=token"
-        guard let url = URL(string: strLink) else {
-            print("Invalid link")
-            return
-        }
-        
+        guard let url = NetworkService.standard.constructAuthUrl() else { return }
         let viewController = authWebViewAssembly.assemble(with: url, delegate: transitionHandler as! ILoginScreenView)
         viewController.modalPresentationStyle = .automatic
         transitionHandler?.present(viewController, animated: true)
