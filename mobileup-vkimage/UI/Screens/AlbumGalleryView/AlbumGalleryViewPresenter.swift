@@ -10,7 +10,7 @@ import Foundation
 protocol IAlbumGalleryViewPresenter: AnyObject {
     func viewDidLoad()
     func logout()
-    
+    func didSelectItemAt(_ indexPath: IndexPath)
     func numberOfSections() -> Int
     func numberOfItemsInSection (section: Int) -> Int
 }
@@ -32,6 +32,10 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
         
         AuthService.standard.clearAccessToken()
         router.logoutAndPopToRoot()
+    }
+    
+    func didSelectItemAt(_ indexPath: IndexPath) {
+        router.showPhotoDetailsView()
     }
     
     func numberOfSections() -> Int {

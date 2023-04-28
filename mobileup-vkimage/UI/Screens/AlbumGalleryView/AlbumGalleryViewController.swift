@@ -28,6 +28,7 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
         flowLayout.minimumInteritemSpacing = 3
         flowLayout.minimumLineSpacing = 3
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        flowLayout.sectionInsetReference = .fromSafeArea
         return flowLayout
     }()
     
@@ -78,12 +79,16 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AlbumGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
+        let width = collectionView.bounds.width - (view.safeAreaInsets.left + view.safeAreaInsets.right)
         let numberOfItemsPerRow: CGFloat = 2
         let spacing: CGFloat = flowLayout.minimumInteritemSpacing
         let availableWidth = width - spacing
         let itemDimension = floor(availableWidth / numberOfItemsPerRow)
         return CGSize(width: itemDimension, height: itemDimension)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItemAt(indexPath)
     }
 }
 

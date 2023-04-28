@@ -27,6 +27,7 @@ final class AuthWebViewController: UIViewController, IAuthWebView {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
         activityIndicator.hidesWhenStopped = true
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
