@@ -24,6 +24,10 @@
 		75DFCF2A29FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */; };
 		75DFCF2C29FC015B0027F8F7 /* AlbumGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */; };
 		75DFCF2E29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */; };
+		75DFCF3129FC03F30027F8F7 /* PhotoDetailsViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3029FC03F30027F8F7 /* PhotoDetailsViewAssembly.swift */; };
+		75DFCF3329FC03FB0027F8F7 /* PhotoDetailsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3229FC03FB0027F8F7 /* PhotoDetailsViewPresenter.swift */; };
+		75DFCF3529FC04030027F8F7 /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3429FC04030027F8F7 /* PhotoDetailsViewController.swift */; };
+		75DFCF3729FC040D0027F8F7 /* PhotoDetailsViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		75DFCF2929FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewPresenter.swift; sourceTree = "<group>"; };
 		75DFCF2B29FC015B0027F8F7 /* AlbumGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewController.swift; sourceTree = "<group>"; };
 		75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGalleryViewRouter.swift; sourceTree = "<group>"; };
+		75DFCF3029FC03F30027F8F7 /* PhotoDetailsViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewAssembly.swift; sourceTree = "<group>"; };
+		75DFCF3229FC03FB0027F8F7 /* PhotoDetailsViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewPresenter.swift; sourceTree = "<group>"; };
+		75DFCF3429FC04030027F8F7 /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
+		75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 				75D5CB5C29F9949100F8761B /* LoginScreen */,
 				75DFCF1D29FB1F9C0027F8F7 /* AuthWebView */,
 				75DFCF2F29FC01F10027F8F7 /* AlbumGalleryView */,
+				75DFCF3829FC04160027F8F7 /* PhotoDetailsView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -146,6 +155,17 @@
 				75DFCF2D29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift */,
 			);
 			path = AlbumGalleryView;
+			sourceTree = "<group>";
+		};
+		75DFCF3829FC04160027F8F7 /* PhotoDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				75DFCF3029FC03F30027F8F7 /* PhotoDetailsViewAssembly.swift */,
+				75DFCF3229FC03FB0027F8F7 /* PhotoDetailsViewPresenter.swift */,
+				75DFCF3429FC04030027F8F7 /* PhotoDetailsViewController.swift */,
+				75DFCF3629FC040D0027F8F7 /* PhotoDetailsViewRouter.swift */,
+			);
+			path = PhotoDetailsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +240,10 @@
 			files = (
 				75DFCF2129FB1FC00027F8F7 /* AuthWebViewPresenter.swift in Sources */,
 				75DFCF2E29FC01BB0027F8F7 /* AlbumGalleryViewRouter.swift in Sources */,
+				75DFCF3329FC03FB0027F8F7 /* PhotoDetailsViewPresenter.swift in Sources */,
 				75DFCF1F29FB1FB50027F8F7 /* AuthWebViewAssembly.swift in Sources */,
 				75DFCF2329FB1FCE0027F8F7 /* AuthWebViewRouter.swift in Sources */,
+				75DFCF3129FC03F30027F8F7 /* PhotoDetailsViewAssembly.swift in Sources */,
 				75D5CB6729FAD16200F8761B /* AuthWebViewController.swift in Sources */,
 				75DFCF2C29FC015B0027F8F7 /* AlbumGalleryViewController.swift in Sources */,
 				75DFCF2529FB36160027F8F7 /* KeychainService.swift in Sources */,
@@ -230,8 +252,10 @@
 				75D5CB3F29F98F8100F8761B /* AppDelegate.swift in Sources */,
 				75DFCF2A29FC011C0027F8F7 /* AlbumGalleryViewPresenter.swift in Sources */,
 				75D5CB5529F992C600F8761B /* LoginScreenRouter.swift in Sources */,
+				75DFCF3529FC04030027F8F7 /* PhotoDetailsViewController.swift in Sources */,
 				75DFCF2829FC00DD0027F8F7 /* AlbumGalleryViewAssembly.swift in Sources */,
 				75D5CB5729F992D200F8761B /* LoginScreenPresenter.swift in Sources */,
+				75DFCF3729FC040D0027F8F7 /* PhotoDetailsViewRouter.swift in Sources */,
 				75D5CB4129F98F8100F8761B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
