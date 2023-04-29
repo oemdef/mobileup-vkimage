@@ -22,7 +22,7 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     }
     
     func viewDidLoad() {
-        if AuthService.standard.loadAccessToken() != nil {
+        if AuthService.standard.isLastTokenValid() {
             authWebViewGotDismissed()
         }
     }
