@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol IPhotoDetailsViewAssembly: AnyObject {
-    func assemble() -> UIViewController
+    func assemble(photo: AlbumItem) -> UIViewController
 }
 
 final class PhotoDetailsViewAssembly: IPhotoDetailsViewAssembly {
-    func assemble() -> UIViewController {
+    func assemble(photo: AlbumItem) -> UIViewController {
         let router = PhotoDetailsViewRouter()
-        let presenter = PhotoDetailsViewPresenter(router: router)
+        let presenter = PhotoDetailsViewPresenter(photo: photo,router: router)
         let viewController = PhotoDetailsViewController(presenter: presenter)
         
         presenter.view = viewController

@@ -17,10 +17,10 @@ struct Album: Decodable {
 
 struct AlbumItem: Decodable {
     let date: Double
-    let sizes: [Photo]
+    let sizes: [PhotoMetadata]
 }
 
-struct Photo: Decodable {
+struct PhotoMetadata: Decodable {
     let url: String
     var type: String
 }

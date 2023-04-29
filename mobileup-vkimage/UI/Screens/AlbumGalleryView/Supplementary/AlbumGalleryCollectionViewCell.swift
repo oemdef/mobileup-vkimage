@@ -52,6 +52,10 @@ final class AlbumGalleryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    func configure(with albumItem: AlbumItem) {
+//        
+//    }
+    
 //    func configure(withUrl urlString: String) {
 //        activityIndicator.startAnimating()
 //        if let url = URL(string: urlString) {

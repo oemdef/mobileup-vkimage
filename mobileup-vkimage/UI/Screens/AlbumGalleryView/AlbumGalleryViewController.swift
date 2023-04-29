@@ -10,6 +10,7 @@ import UIKit
 
 protocol IAlbumGalleryView: AnyObject {
     func updateState(state: ViewControllerState)
+    func reloadData()
 }
 
 enum ViewControllerState {
@@ -65,6 +66,25 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
         presenter.viewDidLoad()
     }
     
+    func updateState(state: ViewControllerState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .loading:
+                self.collectionView.isHidden = true
+                self.activityIndicator.startAnimating()
+            case .ready:
+                self.collectionView.isHidden = false
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     private func setupNavbar() {
         title = "MobileUp Gallery"
         let logoutButton = UIBarButtonItem(title: "Выход", style: .plain, target: self, action: #selector(tappedLogout))
@@ -88,19 +108,6 @@ final class AlbumGalleryViewController: UIViewController, IAlbumGalleryView {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    func updateState(state: ViewControllerState) {
-        DispatchQueue.main.async {
-            switch state {
-            case .loading:
-                self.collectionView.isHidden = true
-                self.activityIndicator.startAnimating()
-            case .ready:
-                self.collectionView.isHidden = false
-                self.activityIndicator.stopAnimating()
-            }
-        }
     }
     
     @objc private func tappedLogout() {
@@ -139,6 +146,8 @@ extension AlbumGalleryViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumGalleryCollectionViewCell.identifier, for: indexPath) as? AlbumGalleryCollectionViewCell else {
              return UICollectionViewCell()
         }
+        
+        presenter.cellForItemAt(indexPath)
         
         return cell
     }

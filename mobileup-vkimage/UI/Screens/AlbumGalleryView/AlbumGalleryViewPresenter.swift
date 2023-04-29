@@ -10,6 +10,7 @@ import Foundation
 protocol IAlbumGalleryViewPresenter: AnyObject {
     func viewDidLoad()
     func logout()
+    func cellForItemAt(_ indexPath: IndexPath) -> AlbumItem
     func didSelectItemAt(_ indexPath: IndexPath)
     func numberOfSections() -> Int
     func numberOfItemsInSection (section: Int) -> Int
@@ -19,7 +20,7 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     weak var view: IAlbumGalleryView?
     private let router: IAlbumGalleryViewRouter
     
-    private let albumItems: [AlbumItem] = []
+    private var albumItems: [AlbumItem] = []
     
     init(router: IAlbumGalleryViewRouter) {
         self.router = router
@@ -28,8 +29,14 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     func viewDidLoad() {
         view?.updateState(state: .loading)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-            self?.view?.updateState(state: .ready)
+        DispatchQueue.global().async {
+            NetworkService.standard.getResponse { [weak self] (response) in
+                guard let response = response else { return }
+                
+                self?.albumItems = response.items
+                self?.view?.reloadData()
+                self?.view?.updateState(state: .ready)
+            }
         }
     }
     
@@ -39,8 +46,12 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
         router.logoutAndPopToRoot()
     }
     
+    func cellForItemAt(_ indexPath: IndexPath) -> AlbumItem {
+        return albumItems[indexPath.row]
+    }
+    
     func didSelectItemAt(_ indexPath: IndexPath) {
-        router.showPhotoDetailsView()
+        router.showPhotoDetailsView(photo: albumItems[indexPath.row])
     }
     
     func numberOfSections() -> Int {
@@ -48,7 +59,7 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     }
     
     func numberOfItemsInSection (section: Int) -> Int {
-        return 17
+        return albumItems.count
     }
 }
 

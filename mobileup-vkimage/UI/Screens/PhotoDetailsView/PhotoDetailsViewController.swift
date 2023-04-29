@@ -16,8 +16,8 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemFill
-        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .clear
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -53,7 +53,8 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
     }
     
     private func setupNavbar() {
-        title = "7 апреля 2023"
+        let dateForTitle = Date(timeIntervalSince1970: presenter.getPhoto().date)
+        title = DateFormatter.titleFormatter.string(from: dateForTitle)
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(tappedShare))
         navigationItem.rightBarButtonItem = shareButton
     }
@@ -69,10 +70,10 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -80,5 +81,15 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
             activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
     }
+}
+
+extension DateFormatter {
+    static let titleFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.dateFormat = "d MMMM yyyy"
+        return formatter
+    }()
 }
 

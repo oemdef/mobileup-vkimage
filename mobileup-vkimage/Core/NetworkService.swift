@@ -14,6 +14,39 @@ final class NetworkService {
     
     private let baseUrlProvider = BaseURLProvider()
     
+    func request(url: URL, completion: @escaping (Data?, Error?) -> Void) {
+        let request = URLRequest(url: url)
+        let task = createDataTask(from: request, completion: completion)
+        task.resume()
+    }
+    
+    private func createDataTask(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        })
+    }
+    
+    func getResponse(response: @escaping (Album?) -> Void) {
+        guard let url = constructRequestUrl() else { return }
+        request(url: url) { (data, error) in
+            if let error = error {
+                print("error while receiving data: \(error.localizedDescription)")
+                response(nil)
+            }
+            let decoded = self.decodeJSON(type: Response.self, from: data)
+            response(decoded?.response)
+        }
+    }
+    
+    private func decodeJSON<T: Decodable>(type: T.Type, from: Data?) -> T? {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        guard let data = from, let response = try? decoder.decode(type.self, from: data) else { return nil }
+        return response
+    }
+    
     func constructRequestUrl() -> URL? {
         let components = URLComponents(string: baseUrlProvider.baseApiUrlString)
         guard var components else { return nil }
@@ -24,7 +57,8 @@ final class NetworkService {
         let queryItems: [String : String] = [
             "owner_id" : "-128666765",
             "album_id" : "266310117",
-            "access_token" : accessToken
+            "access_token" : accessToken,
+            "v" : "5.131"
         ]
         components.queryItems = queryItems.map({ URLQueryItem(name: $0.key, value: $0.value )})
         
