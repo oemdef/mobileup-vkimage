@@ -62,7 +62,8 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
     }
     
     @objc private func tappedShare() {
-        
+        guard let image = imageView.image else { return }
+        presenter.showShareSheet(image: image)
     }
                                                     
     private func addSubviews() {

@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol IPhotoDetailsViewPresenter: AnyObject {
     func viewDidLoad()
+    func showShareSheet(image: UIImage)
 }
 
 final class PhotoDetailsViewPresenter: IPhotoDetailsViewPresenter {
@@ -21,5 +23,9 @@ final class PhotoDetailsViewPresenter: IPhotoDetailsViewPresenter {
     
     func viewDidLoad() {
         // TODO: Implementation
+    }
+    
+    func showShareSheet(image: UIImage) {
+        router.showShareSheet(image: image)
     }
 }
