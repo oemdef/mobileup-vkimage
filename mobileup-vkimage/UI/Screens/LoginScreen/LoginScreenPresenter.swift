@@ -32,6 +32,11 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     func authWebViewGotDismissed() {
         if AuthService.standard.isLastTokenValid() {
             router.showAlbumGalleryView()
+        } else if AuthService.standard.loadAccessToken() != nil {
+            router.showAuthWebView()
+        } else {
+            router.showAuthNotFinished()
+            router.showAuthWebView()
         }
     }
 }

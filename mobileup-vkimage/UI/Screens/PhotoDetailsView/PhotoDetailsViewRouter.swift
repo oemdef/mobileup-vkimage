@@ -20,6 +20,25 @@ final class PhotoDetailsViewRouter: IPhotoDetailsViewRouter {
             image
         ], applicationActivities: nil)
         
+        activityVC.completionWithItemsHandler = {(UIActivityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if completed {
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "Успешное сохранение", message: "Фотография успешно сохранена в вашу Медиатеку", preferredStyle: .alert)
+                    let actionOK = UIAlertAction(title: "Здорово", style: .default)
+                    alertController.addAction(actionOK)
+                    self.transitionHandler?.present(alertController, animated: true, completion: nil)
+                }
+            }
+            if let error {
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "Не удалось сохранить фотографию", message: "Проверьте разрешение на доступ приложения к вашей Медиатеке в Настройках. Ошибка: \(error.localizedDescription)", preferredStyle: .alert)
+                    let actionOK = UIAlertAction(title: "ОК", style: .default)
+                    alertController.addAction(actionOK)
+                    self.transitionHandler?.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+        
         DispatchQueue.main.async {
             self.transitionHandler?.present(activityVC, animated: true)
         }

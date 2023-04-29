@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol IAuthWebViewPresenter: AnyObject {
     func viewDidLoad()
@@ -14,7 +15,7 @@ protocol IAuthWebViewPresenter: AnyObject {
 }
 
 final class AuthWebViewPresenter: IAuthWebViewPresenter {
-    
+    weak var view: IAuthWebView?
     private let router: IAuthWebViewRouter
     
     init(router: IAuthWebViewRouter) {
@@ -26,9 +27,8 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
     }
     
     func failedToLoad(with error: Error) {
-        // TODO: Implementation
-        print(#function)
-        print(error.localizedDescription)
+        router.failedToLoad(error: error)
+        router.dismiss()
     }
     
     func handleCallbackUrl(url: URL) {
@@ -55,7 +55,7 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
     }
     
     private func gotInvalidToken() {
-        // TODO: Implementation
-        print(#function)
+        router.invalidToken()
+        router.dismiss()
     }
 }

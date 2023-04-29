@@ -57,8 +57,8 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
         view?.updateState(state: .loading)
         
         DispatchQueue.global().async {
-            NetworkService.standard.getResponse { [weak self] (response) in
-                guard let response = response else { return }
+            NetworkService.standard.getResponse { [weak self] (response, error) in
+                guard let response = response else { self?.router.responseError(error: error!); return }
                 
                 self?.albumItems = response.items
                 self?.view?.reloadData()

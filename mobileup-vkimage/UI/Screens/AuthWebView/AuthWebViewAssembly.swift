@@ -19,7 +19,8 @@ final class AuthWebViewAssembly: IAuthWebViewAssembly {
         let presenter = AuthWebViewPresenter(router: router)
         
         let viewController = AuthWebViewController(presenter: presenter, url: url, delegate: delegate)
-
+        
+        presenter.view = viewController
         router.transitionHandler = viewController
         return viewController
     }

@@ -11,6 +11,7 @@ import UIKit
 protocol ILoginScreenRouter: AnyObject {
     func showAuthWebView()
     func showAlbumGalleryView()
+    func showAuthNotFinished()
 }
 
 final class LoginScreenRouter: ILoginScreenRouter {
@@ -29,5 +30,14 @@ final class LoginScreenRouter: ILoginScreenRouter {
     func showAlbumGalleryView() {
         let viewController = albumGalleryViewAssembly.assemble()
         transitionHandler?.navigationController?.setViewControllers([viewController], animated: true)
+    }
+    
+    func showAuthNotFinished() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Авторизация не была завершена", message: "Вы не закончили авторизацию через OAuth в приложении. Она нужна для его корректной работы.", preferredStyle: .alert)
+            let actionOK = UIAlertAction(title: "ОК", style: .default)
+            alertController.addAction(actionOK)
+            self.transitionHandler?.present(alertController, animated: true, completion: nil)
+        }
     }
 }

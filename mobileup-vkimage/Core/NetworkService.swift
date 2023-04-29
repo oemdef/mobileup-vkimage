@@ -38,15 +38,15 @@ final class NetworkService {
         }
     }
     
-    func getResponse(response: @escaping (Album?) -> Void) {
+    func getResponse(response: @escaping (Album?, Error?) -> Void) {
         guard let url = constructRequestUrl() else { return }
         request(url: url) { (data, error) in
             if let error = error {
                 print("error while receiving data: \(error.localizedDescription)")
-                response(nil)
+                response(nil, error)
             }
             let decoded = self.decodeJSON(type: Response.self, from: data)
-            response(decoded?.response)
+            response(decoded?.response, nil)
         }
     }
     

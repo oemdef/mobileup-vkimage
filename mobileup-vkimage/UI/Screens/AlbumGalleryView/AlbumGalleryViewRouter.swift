@@ -10,6 +10,7 @@ import UIKit
 
 protocol IAlbumGalleryViewRouter: AnyObject {
     func showPhotoDetailsView(photo: Photo)
+    func responseError(error: Error)
     func logoutAndPopToRoot()
 }
 
@@ -22,6 +23,17 @@ final class AlbumGalleryViewRouter: IAlbumGalleryViewRouter {
     func showPhotoDetailsView(photo: Photo) {
         let viewController = photoDetailsViewAssembly.assemble(photo: photo)
         transitionHandler?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func responseError(error: Error) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Неудачный запрос к API", message: "Проверьте подключение к интернету. Ошибка: \(error.localizedDescription)", preferredStyle: .alert)
+            let actionRetry = UIAlertAction(title: "Попробовать снова", style: .default) { (retry) in
+                self.transitionHandler?.viewDidLoad()
+            }
+            alertController.addAction(actionRetry)
+            self.transitionHandler?.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func logoutAndPopToRoot() {
