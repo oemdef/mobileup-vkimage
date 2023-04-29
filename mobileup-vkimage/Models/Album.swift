@@ -24,3 +24,8 @@ struct PhotoMetadata: Decodable {
     let url: String
     var type: String
 }
+
+struct Photo {
+    let date: String
+    let photoUrl: URL
+}

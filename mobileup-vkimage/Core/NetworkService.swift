@@ -28,6 +28,16 @@ final class NetworkService {
         })
     }
     
+    func getImageData(imageUrl: URL, completion: @escaping (Data?) -> Void) {
+        request(url: imageUrl) { (data, error) in
+            if let error = error {
+                print("error while receiving data: \(error.localizedDescription)")
+                completion(nil)
+            }
+            completion(data)
+        }
+    }
+    
     func getResponse(response: @escaping (Album?) -> Void) {
         guard let url = constructRequestUrl() else { return }
         request(url: url) { (data, error) in

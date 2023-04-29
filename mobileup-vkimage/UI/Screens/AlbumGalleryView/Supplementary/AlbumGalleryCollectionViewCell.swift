@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 final class AlbumGalleryCollectionViewCell: UICollectionViewCell {
     static let identifier = "AlbumGalleryCollectionViewCell"
@@ -44,37 +45,17 @@ final class AlbumGalleryCollectionViewCell: UICollectionViewCell {
             activityIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
-        
-        activityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func configure(with albumItem: AlbumItem) {
-//        
-//    }
-    
-//    func configure(withUrl urlString: String) {
-//        activityIndicator.startAnimating()
-//        if let url = URL(string: urlString) {
-//            DispatchQueue.global().async {
-//                let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//                    guard let data = data, error == nil else { return }
-//
-//                    DispatchQueue.main.async {
-//                        self.activityIndicator.stopAnimating()
-//                        self.imageView.image = UIImage(data: data)
-//                    }
-//                }
-//                task.resume()
-//            }
-//        }
-//    }
+    func configure(with photo: Photo) {
+        imageView.sd_setImage(with: photo.photoUrl, placeholderImage: UIImage(named: "placeholder")!)
+    }
     
     override func prepareForReuse() {
-        activityIndicator.startAnimating()
         imageView.image = nil
     }
 }

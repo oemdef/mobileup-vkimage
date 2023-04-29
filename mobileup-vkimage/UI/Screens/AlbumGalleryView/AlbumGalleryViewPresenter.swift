@@ -8,9 +8,10 @@
 import Foundation
 
 protocol IAlbumGalleryViewPresenter: AnyObject {
+    func makePhotoModels(from albumItems: [AlbumItem]) -> [Photo]
     func viewDidLoad()
     func logout()
-    func cellForItemAt(_ indexPath: IndexPath) -> AlbumItem
+    func cellForItemAt(_ indexPath: IndexPath) -> Photo
     func didSelectItemAt(_ indexPath: IndexPath)
     func numberOfSections() -> Int
     func numberOfItemsInSection (section: Int) -> Int
@@ -20,10 +21,36 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     weak var view: IAlbumGalleryView?
     private let router: IAlbumGalleryViewRouter
     
-    private var albumItems: [AlbumItem] = []
+    private var albumItems: [AlbumItem] = [] {
+        didSet {
+            photos = makePhotoModels(from: albumItems)
+        }
+    }
+    
+    private var photos: [Photo] = []
     
     init(router: IAlbumGalleryViewRouter) {
         self.router = router
+    }
+    
+    func makePhotoModels(from albumItems: [AlbumItem]) -> [Photo] {
+        var photos: [Photo] = []
+        for item in albumItems {
+            let dateForTitle = Date(timeIntervalSince1970: item.date)
+            let date = DateFormatter.titleFormatter.string(from: dateForTitle)
+            var photoUrl: String = ""
+            
+            let sizes = item.sizes
+            for size in sizes {
+                if size.type == "z" {
+                    photoUrl = size.url
+                }
+            }
+            if let photoUrl = URL(string: photoUrl) {
+                photos.append(Photo(date: date, photoUrl: photoUrl))
+            }
+        }
+        return photos
     }
     
     func viewDidLoad() {
@@ -42,16 +69,16 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     
     func logout() {
         // TODO: Implement Logout Call to API
-//        AuthService.standard.clearAccessToken()
+        AuthService.standard.clearAccessToken()
         router.logoutAndPopToRoot()
     }
     
-    func cellForItemAt(_ indexPath: IndexPath) -> AlbumItem {
-        return albumItems[indexPath.row]
+    func cellForItemAt(_ indexPath: IndexPath) -> Photo {
+        return photos[indexPath.row]
     }
     
     func didSelectItemAt(_ indexPath: IndexPath) {
-        router.showPhotoDetailsView(photo: albumItems[indexPath.row])
+        router.showPhotoDetailsView(photo: photos[indexPath.row])
     }
     
     func numberOfSections() -> Int {
@@ -62,4 +89,3 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
         return albumItems.count
     }
 }
-

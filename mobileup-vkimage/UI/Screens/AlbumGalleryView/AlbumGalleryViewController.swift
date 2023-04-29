@@ -147,7 +147,8 @@ extension AlbumGalleryViewController: UICollectionViewDataSource {
              return UICollectionViewCell()
         }
         
-        presenter.cellForItemAt(indexPath)
+        let model = presenter.cellForItemAt(indexPath)
+        cell.configure(with: model)
         
         return cell
     }

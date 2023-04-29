@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol IAlbumGalleryViewRouter: AnyObject {
-    func showPhotoDetailsView(photo: AlbumItem)
+    func showPhotoDetailsView(photo: Photo)
     func logoutAndPopToRoot()
 }
 
@@ -19,7 +19,7 @@ final class AlbumGalleryViewRouter: IAlbumGalleryViewRouter {
     private let photoDetailsViewAssembly = PhotoDetailsViewAssembly()
     private let loginScreenAssembly = LoginScreenAssembly()
    
-    func showPhotoDetailsView(photo: AlbumItem) {
+    func showPhotoDetailsView(photo: Photo) {
         let viewController = photoDetailsViewAssembly.assemble(photo: photo)
         transitionHandler?.navigationController?.pushViewController(viewController, animated: true)
     }

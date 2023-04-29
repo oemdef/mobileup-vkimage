@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol IPhotoDetailsView: AnyObject {
 }
 
 final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
     private let presenter: IPhotoDetailsViewPresenter
+    private let photo: Photo
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -31,8 +33,9 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
         return activityIndicator
     }()
     
-    init(presenter: IPhotoDetailsViewPresenter) {
+    init(presenter: IPhotoDetailsViewPresenter, photo: Photo) {
         self.presenter = presenter
+        self.photo = photo
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,13 +51,12 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
         addSubviews()
         setupConstraints()
         
-        activityIndicator.startAnimating()
         presenter.viewDidLoad()
     }
     
     private func setupNavbar() {
-        let dateForTitle = Date(timeIntervalSince1970: presenter.getPhoto().date)
-        title = DateFormatter.titleFormatter.string(from: dateForTitle)
+        title = photo.date
+        imageView.sd_setImage(with: photo.photoUrl, placeholderImage: UIImage(named: "placeholder")!)
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(tappedShare))
         navigationItem.rightBarButtonItem = shareButton
     }
@@ -81,15 +83,5 @@ final class PhotoDetailsViewController: UIViewController, IPhotoDetailsView {
             activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
     }
-}
-
-extension DateFormatter {
-    static let titleFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeZone = .current
-        formatter.locale = Locale(identifier: "ru_RU")
-        formatter.dateFormat = "d MMMM yyyy"
-        return formatter
-    }()
 }
 
