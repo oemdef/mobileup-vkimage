@@ -68,7 +68,6 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     }
     
     func logout() {
-        // TODO: Implement Logout Call to API
         AuthService.standard.clearAccessToken()
         router.logoutAndPopToRoot()
     }

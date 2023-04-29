@@ -28,7 +28,6 @@ final class AuthWebViewPresenter: IAuthWebViewPresenter {
     
     func failedToLoad(with error: Error) {
         router.failedToLoad(error: error)
-        router.dismiss()
     }
     
     func handleCallbackUrl(url: URL) {

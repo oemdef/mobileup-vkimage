@@ -22,7 +22,9 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     }
     
     func viewDidLoad() {
-        authWebViewGotDismissed()
+        if AuthService.standard.loadAccessToken() != nil {
+            authWebViewGotDismissed()
+        }
     }
     
     func loginButtonTapped() {
@@ -32,11 +34,8 @@ final class LoginScreenPresenter: ILoginScreenPresenter {
     func authWebViewGotDismissed() {
         if AuthService.standard.isLastTokenValid() {
             router.showAlbumGalleryView()
-        } else if AuthService.standard.loadAccessToken() != nil {
-            router.showAuthWebView()
         } else {
             router.showAuthNotFinished()
-            router.showAuthWebView()
         }
     }
 }

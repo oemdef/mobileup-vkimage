@@ -31,7 +31,7 @@ final class PhotoDetailsViewRouter: IPhotoDetailsViewRouter {
             }
             if let error {
                 DispatchQueue.main.async {
-                    let alertController = UIAlertController(title: "Не удалось сохранить фотографию", message: "Проверьте разрешение на доступ приложения к вашей Медиатеке в Настройках. Ошибка: \(error.localizedDescription)", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Не удалось сохранить фотографию", message: "Ошибка: \(error.localizedDescription)", preferredStyle: .alert)
                     let actionOK = UIAlertAction(title: "ОК", style: .default)
                     alertController.addAction(actionOK)
                     self.transitionHandler?.present(alertController, animated: true, completion: nil)

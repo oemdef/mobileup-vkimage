@@ -23,9 +23,15 @@ final class AuthWebViewRouter: IAuthWebViewRouter {
     
     func failedToLoad(error: Error) {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Не удалось отобразить страницу", message: "Загрузка страницы авторизации не удалась. Проверьте подключение к интернету. Ошибка: \(error.localizedDescription)", preferredStyle: .alert)
-            let actionOK = UIAlertAction(title: "Попробовать снова", style: .default)
-            alertController.addAction(actionOK)
+            let alertController = UIAlertController(title: "Не удалось отобразить страницу", message: "Загрузка страницы авторизации не удалась. Проверьте подключение к интернету.\n\nОшибка: \(error.localizedDescription)", preferredStyle: .alert)
+            let actionRetry = UIAlertAction(title: "Попробовать снова", style: .default) { (retry) in
+                self.transitionHandler?.viewDidLoad()
+            }
+            let actionCancel = UIAlertAction(title: "Отменить", style: .cancel) { (cancel) in
+                self.dismiss()
+            }
+            alertController.addAction(actionRetry)
+            alertController.addAction(actionCancel)
             self.transitionHandler?.present(alertController, animated: true, completion: nil)
         }
     }
@@ -33,8 +39,14 @@ final class AuthWebViewRouter: IAuthWebViewRouter {
     func invalidToken() {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: "Ошибка API", message: "Авторизация не удалась. Операция получения токена от VK OAuth API закончилась с ошибкой.", preferredStyle: .alert)
-            let actionOK = UIAlertAction(title: "Попробовать снова", style: .default)
-            alertController.addAction(actionOK)
+            let actionRetry = UIAlertAction(title: "Попробовать снова", style: .default) { (retry) in
+                self.transitionHandler?.viewDidLoad()
+            }
+            let actionCancel = UIAlertAction(title: "Отменить", style: .cancel) { (cancel) in
+                self.dismiss()
+            }
+            alertController.addAction(actionRetry)
+            alertController.addAction(actionCancel)
             self.transitionHandler?.present(alertController, animated: true, completion: nil)
         }
     }
