@@ -19,6 +19,9 @@ final class PhotoDetailsViewRouter: IPhotoDetailsViewRouter {
         let activityVC = UIActivityViewController(activityItems: [
             image
         ], applicationActivities: nil)
-        transitionHandler?.present(activityVC, animated: true)
+        
+        DispatchQueue.main.async {
+            self.transitionHandler?.present(activityVC, animated: true)
+        }
     }
 }
