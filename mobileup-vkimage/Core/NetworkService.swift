@@ -50,10 +50,10 @@ final class NetworkService {
         }
     }
     
-    private func decodeJSON<T: Decodable>(type: T.Type, from: Data?) -> T? {
+    private func decodeJSON<T: Decodable>(type: T.Type, from data: Data?) -> T? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        guard let data = from, let response = try? decoder.decode(type.self, from: data) else { return nil }
+        guard let data, let response = try? decoder.decode(type.self, from: data) else { return nil }
         return response
     }
     
@@ -93,5 +93,23 @@ final class NetworkService {
         guard let url = components.url else { return nil }
         
         return url
+    }
+}
+
+// MARK: – Swift Concurrency (async/await) extension
+extension NetworkService {
+    enum NetworkError: Error {
+        case invalidRequestUrl(_ msg: String)
+    }
+    
+    func scGetResponse() async throws -> Album {
+        guard let url = constructRequestUrl() else {
+            throw NetworkError.invalidRequestUrl("Invalid Request URL!")
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(Response.self, from: data)
+        return decoded.response
     }
 }

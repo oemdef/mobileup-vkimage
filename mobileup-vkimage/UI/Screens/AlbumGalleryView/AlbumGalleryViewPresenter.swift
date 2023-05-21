@@ -21,6 +21,8 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     weak var view: IAlbumGalleryView?
     private let router: IAlbumGalleryViewRouter
     
+    private let useSwiftConcurrency: Bool = true
+    
     private var albumItems: [AlbumItem] = [] {
         didSet {
             photos = makePhotoModels(from: albumItems)
@@ -55,7 +57,11 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
     
     func viewDidLoad() {
         view?.updateState(state: .loading)
-        
+
+        useSwiftConcurrency ? scRequestOnLoad() : defaultRequestOnLoad()
+    }
+    
+    private func defaultRequestOnLoad() {
         DispatchQueue.global().async {
             NetworkService.standard.getResponse { [weak self] (response, error) in
                 guard let response = response else { self?.router.responseError(error: error!); return }
@@ -63,6 +69,20 @@ final class AlbumGalleryViewPresenter: IAlbumGalleryViewPresenter {
                 self?.albumItems = response.items
                 self?.view?.reloadData()
                 self?.view?.updateState(state: .ready)
+            }
+        }
+    }
+    
+    private func scRequestOnLoad() {
+        Task {
+            do {
+                let albums = try await NetworkService.standard.scGetResponse()
+                
+                albumItems = albums.items
+                view?.reloadData()
+                view?.updateState(state: .ready)
+            } catch {
+                router.responseError(error: error)
             }
         }
     }
